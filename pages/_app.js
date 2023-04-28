@@ -5,16 +5,16 @@ import {
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
-import { RiDashboardFill, RiArchiveDrawerFill, RiFileAddFill, RiCustomerService2Fill } from "react-icons/ri"
-import { Dropdown, Space } from 'antd';
-import { MdNotifications } from "react-icons/md"
+import { RiDashboardFill, RiFileAddFill, } from "react-icons/ri"
 import { useRouter } from 'next/router';
 import { FaList, } from "react-icons/fa"
 import { BsPeopleFill, BsFillCartCheckFill } from "react-icons/bs"
 const { Header, Sider, Content } = Layout;
 import Link from "next/link"
+import Image from 'next/image';
 
 export default function App({ Component, pageProps }) {
+
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -34,6 +34,12 @@ export default function App({ Component, pageProps }) {
     }
   ];
   const router = useRouter();
+
+  const { noLayout } = Component;
+
+  if (noLayout) {
+    return <Component {...pageProps} />;
+  }
 
   return (
     <>
@@ -59,7 +65,7 @@ export default function App({ Component, pageProps }) {
             }}
             items={[
               {
-                key: '/',
+                key: '/dashboard',
                 icon: <RiDashboardFill className='fs-5' />,
                 label: 'Dashboard',
               },
@@ -107,25 +113,15 @@ export default function App({ Component, pageProps }) {
           />
         </Sider>
         <Layout>
-          <Header
-            className='flex justify-between align-center ps-1 pe-5'
-            style={{
-              padding: 0,
-              background: colorBgContainer,
-            }}
-          >
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: '16px',
-                width: 64,
-                height: 64,
-              }}
-            />
+          <Header className='flex justify-between items-center ps-1 pe-5' style={{ padding: 0, background: colorBgContainer }}>
+            <Button type="text" icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} onClick={() => setCollapsed(!collapsed)} style={{ fontSize: '16px', width: 64, height: 64 }} />
 
+            <div className='flex items-center'>
+              <Image className='w-12 h-12 rounded-full mr-2' src='https://images.unsplash.com/photo-1633332755192-727a05c4013d' width="12" height="12" alt='Profile Image' />
+              <Link href="/" className='px-4 text-white bg-red-500'>Sign Out</Link>
+            </div>
           </Header>
+
           <Content
             style={{
               margin: '24px 16px',

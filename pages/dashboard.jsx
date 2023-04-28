@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { BsArrowDownRight, BsArrowUpRight } from "react-icons/bs";
 import { Table } from "antd";
 
@@ -22,10 +22,7 @@ const columns = [
 ];
 const data1 = [];
 
-
-
 const Dashboard = () => {
-
   return (
     <div>
       <h3 className="mb-6 text-xl md:text-3xl font-semibold">Dashboard</h3>
@@ -80,8 +77,7 @@ const Dashboard = () => {
           <h3 className="mb-6 text-xl md:text-3xl font-semibold">
             Income Statistics
           </h3>
-          <div className="mt-8">
-          </div>
+          <div className="mt-8"></div>
         </div>
       </div>
 
