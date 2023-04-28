@@ -14,8 +14,20 @@ const columns = [
     dataIndex: "date",
   },
   {
+    title: "User",
+    dataIndex: "user",
+  },
+  {
     title: "Product Quantity",
     dataIndex: "productQty",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
   },
   {
     title: "Details",
@@ -42,11 +54,21 @@ const Orders = () => {
     const newData = orders.map((order) => {
       return {
         key: order.id,
-        date: new Date(order.date).toLocaleString(),
+        date: new Date(order.date).toLocaleString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        }),
+        status: "Pending",
+        user: "Random User",
+        address: "Dhaka, BD",
         productQty: order.products.length,
         details: (
           <>
-            <Link href={`/orders/${order.id}`} >
+            <Link href={`/orders/${order.id}`}>
               <AiFillEye className="text-2xl" />
             </Link>
           </>

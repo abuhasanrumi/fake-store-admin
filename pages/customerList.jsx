@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "antd";
-import { BiEdit } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillEye } from "react-icons/ai";
+import axios from "axios";
+import Link from "next/link";
 
 const columns = [
   {
@@ -13,19 +14,57 @@ const columns = [
     dataIndex: "name",
   },
   {
-    title: "Product",
-    dataIndex: "product",
+    title: "Phone",
+    dataIndex: "phone",
   },
   {
-    title: "Status",
-    dataIndex: "staus",
+    title: "Email",
+    dataIndex: "email",
+  },
+  {
+    title: "Details",
+    dataIndex: "details",
   },
 ];
 
 const CustomerList = () => {
+  const [users, setUsers] = useState([]);
+  const [data1, setData1] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://fakestoreapi.com/users`)
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const newData = users.map((user) => {
+      return {
+        key: user.id,
+        name: user.name.firstname + " " + user.name.lastname,
+        phone: user.phone,
+        email: user.email,
+        details: (
+          <>
+            <Link href={`/customers/${user.id}`}>
+              <AiFillEye className="text-2xl" />
+            </Link>
+          </>
+        ),
+      };
+    });
+    setData1(newData);
+  }, [users]);
+
   return (
     <div>
-      <h3 className="mb-4 title">Orders</h3>
+      <h3 className="mb-6 text-xl md:text-3xl font-semibold">Customers</h3>
+      <Table columns={columns} dataSource={data1} />
     </div>
   );
 };
