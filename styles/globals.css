@@ -19,6 +19,7 @@
 
 .ant-layout {
   min-height: 100vh;
+  font-family: "Urbanist", sans-serif;
 }
 .sm-logo {
   display: none;

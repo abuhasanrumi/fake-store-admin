@@ -2,6 +2,8 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { IoIosArrowBack } from "react-icons/io";
+import Link from "next/link";
 
 const ProductDetails = () => {
   const router = useRouter();
@@ -27,12 +29,19 @@ const ProductDetails = () => {
   }, [slug]);
 
   return (
-    <div className="w-full">
+    <div className="w-full px-4 sm:px-6 lg:px-8">
+      <Link
+        href="/products"
+        className="flex items-center justify-center text-gray-600 hover:text-gray-800 uppercase mb-[50px]"
+      >
+        <IoIosArrowBack className="mr-2 text-lg" />
+        <span>Return to products list</span>
+      </Link>
       {isLoading && <p>Loading...</p>}
       {!isLoading && product && (
-        <div className="grid grid-cols-2 gap-10">
+        <div className="flex flex-col md:flex-row gap-10">
           {/* product image start */}
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center w-full sm:w-1/2 mb-[30px]">
             <Image
               priority={true}
               src={product.image}
@@ -45,9 +54,9 @@ const ProductDetails = () => {
           {/* product image end */}
 
           {/* product details start */}
-          <div>
+          <div className="w-full md:w-1/2 px-4">
             {/* PRODUCT TITLE */}
-            <div className="text-[34px] font-semibold mb-2 leading-tight">
+            <div className="text-3xl md:text-4xl font-semibold mb-2 leading-tight">
               {product.title}
             </div>
 
@@ -59,19 +68,19 @@ const ProductDetails = () => {
             </div>
 
             {/* PRODUCT CATEGORY */}
-            <div className="text-md my-5">
+            <div className="text-lg my-5">
               <p>Category: {product.category}</p>
             </div>
 
             {/* PRODUCT RATING */}
-            <div className="text-md my-5">
+            <div className="text-lg my-5">
               <p>
                 Rating: {product.rating.rate} ({product.rating.count} count)
               </p>
             </div>
 
             {/* PRODUCT DESCRIPTION */}
-            <div className="text-md my-5">
+            <div className="text-lg my-5">
               <p>Description: {product.description}</p>
             </div>
           </div>

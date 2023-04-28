@@ -117,7 +117,7 @@ export default function App({ Component, pageProps }) {
             <Button type="text" icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} onClick={() => setCollapsed(!collapsed)} style={{ fontSize: '16px', width: 64, height: 64 }} />
 
             <div className='flex items-center'>
-              <Image className='w-12 h-12 rounded-full mr-2' src='https://images.unsplash.com/photo-1633332755192-727a05c4013d' width="12" height="12" alt='Profile Image' />
+              <Image className='w-12 h-12 rounded-full mr-2' src='https://blog.kingland.com/hubfs/leadership-2022/Leadership_Matt-Good.jpg' width="12" height="12" alt='Profile Image' />
               <Link href="/" className='px-4 text-white bg-red-500'>Sign Out</Link>
             </div>
           </Header>

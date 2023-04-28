@@ -29,7 +29,7 @@ const Dashboard = () => {
 
       <div className="mb-8 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         <div className="bg-white p-6">
-          <p className="font-[18px] font-medium text-gray-600">Total Sells</p>
+          <p className="font-[18px] text-gray-600">Total Sells</p>
           <div className="flex justify-between mt-4">
             <h2 className="text-2xl md:text-3xl font-semibold mb-0">
               $1100.00
@@ -43,7 +43,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="bg-white p-6">
-          <p className="font-[18px] font-medium text-gray-600">Total Sells</p>
+          <p className="font-[18px] text-gray-600">Total Sells</p>
           <div className="flex justify-between mt-4">
             <h2 className="text-2xl md:text-3xl font-semibold mb-0">
               $1100.00
@@ -57,7 +57,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="bg-white p-6">
-          <p className="font-[18px] font-medium text-gray-600">Total Sells</p>
+          <p className="font-[18px] text-gray-600">Total Sells</p>
           <div className="flex justify-between mt-4">
             <h2 className="text-2xl md:text-3xl font-semibold mb-0">
               $1100.00

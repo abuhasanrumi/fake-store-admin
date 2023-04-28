@@ -15,7 +15,7 @@ const Login = () => {
               Phone Number
             </label>
             <input
-              class="w-full border border-gray-300 p-2 rounded-md"
+              class="w-full border border-gray-300 p-2 rounded-md h-[50px]"
               type="tel"
               id="phone"
               name="phone"
@@ -30,16 +30,17 @@ const Login = () => {
               Password
             </label>
             <input
-              class="w-full border border-gray-300 p-2 rounded-md"
+              class="w-full border border-gray-300 p-2 rounded-md h-[50px]"
               type="password"
               id="password"
               name="password"
               placeholder="Enter your password"
             />
           </div>
+          <p className="text-red-600">No credentials required, hit login</p>
           <Link
             href="/dashboard"
-            class="w-full block text-center bg-black text-white py-2 px-4 rounded-md hover:bg-gray-900"
+            class="w-full flex items-center justify-center text-center bg-black text-white py-2 px-4 rounded-md hover:bg-gray-900 h-[50px]"
           >
             Login
           </Link>

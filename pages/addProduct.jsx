@@ -62,8 +62,8 @@ const AddProduct = () => {
     <div className="max-w-screen-lg mx-auto my-10">
       <form onSubmit={handleSubmit}>
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-          <div className="-mx-3 md:flex mb-6">
-            <div className="md:w-full px-3 mb-6 md:mb-0">
+          <div className="flex flex-wrap mb-6">
+            <div className="w-full">
               <label
                 className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
                 htmlFor="title"
@@ -79,7 +79,7 @@ const AddProduct = () => {
                 onChange={(event) => setTitle(event.target.value)}
               />
             </div>
-            <div className="md:w-full px-3">
+            <div className="w-full md:w-1/2 md:pr-3 mt-6">
               <label
                 className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
                 htmlFor="price"
@@ -95,9 +95,7 @@ const AddProduct = () => {
                 onChange={(event) => setPrice(event.target.value)}
               />
             </div>
-          </div>
-          <div className="-mx-3 md:flex mb-6">
-            <div className="md:w-full px-3 mb-6 md:mb-0">
+            <div className="w-full md:w-1/2 md:pl-3 mt-6">
               <label
                 className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
                 htmlFor="category"
@@ -105,7 +103,7 @@ const AddProduct = () => {
                 Category
               </label>
               <input
-                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="category"
                 type="text"
                 placeholder="Enter product category"
@@ -113,35 +111,39 @@ const AddProduct = () => {
                 onChange={(event) => setCategory(event.target.value)}
               />
             </div>
-            <div className="md:w-full px-3">
-              <label
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                htmlFor="description"
-              >
-                Description
-              </label>
-              <textarea
-                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="description"
-                placeholder="Enter product description"
-                value={description}
-                onChange={(event) => setDescription(event.target.value)}
-              ></textarea>
-            </div>
           </div>
-          <div className="mb-4">
+          <div className="mb-6">
+            <label
+              className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+              htmlFor="description"
+            >
+              Description
+            </label>
+            <textarea
+              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="description"
+              placeholder="Enter product description"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+            />
+          </div>
+          <div className="mb-6">
             <label
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               htmlFor="image"
             >
-              Image Upload
+              Image
             </label>
-            <Dragger {...props} className="border border-dashed">
+            <Dragger {...props}>
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
               </p>
               <p className="ant-upload-text">
                 Click or drag file to this area to upload
+              </p>
+              <p className="ant-upload-hint">
+                Support for a single upload. Strictly prohibit from uploading
+                corporate data or other band files.
               </p>
             </Dragger>
           </div>
@@ -150,7 +152,7 @@ const AddProduct = () => {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Add Product
+              Upload
             </button>
           </div>
         </div>

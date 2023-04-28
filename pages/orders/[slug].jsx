@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { IoIosArrowBack } from "react-icons/io";
+import Link from "next/link";
 
 const OrderDetails = () => {
   const router = useRouter();
@@ -22,6 +24,13 @@ const OrderDetails = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+      <Link
+        href="/orders"
+        className="flex items-center text-gray-600 hover:text-gray-800 uppercase mb-[25px] ml-[-25px]"
+      >
+        <IoIosArrowBack className="mr-2 text-lg" />
+        <span>Return to order list</span>
+      </Link>
       <h3 className="text-2xl font-bold mb-6">Order Details</h3>
       <div className="bg-white shadow overflow-hidden sm:rounded-lg">
         <div className="px-4 py-5 sm:px-6">
