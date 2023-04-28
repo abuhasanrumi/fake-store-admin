@@ -19,8 +19,12 @@
 
 .ant-layout {
   min-height: 100vh;
-  font-family: "Urbanist", sans-serif;
 }
+.ant-typography,
+.ant-form-item-label {
+  font-family: "Urbantis", sans-serif !important;
+}
+
 .sm-logo {
   display: none;
 }

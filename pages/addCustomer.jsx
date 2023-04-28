@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+const { Dragger } = Upload;
+import { Upload, message } from "antd";
+import { InboxOutlined } from "@ant-design/icons";
 
 const AddCustomer = () => {
   const [email, setEmail] = useState("");
@@ -57,18 +60,56 @@ const AddCustomer = () => {
     // Your submit logic here
   };
 
+  const props = {
+    name: "file",
+    multiple: false,
+    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    onChange(info) {
+      const { status } = info.file;
+      if (status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (status === "done") {
+        message.success(`${info.file.name} file uploaded successfully.`);
+        setImage(info.file.response.url);
+      } else if (status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
+
   return (
-    <div className="container mx-auto my-8">
-      <div className="bg-white rounded-md shadow-md overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h1 className="text-3xl font-bold mb-2">Add Customer</h1>
-        </div>
+    <div class="max-w-screen-lg mx-auto mb-10">
+      <h3 className="mb-6 text-xl md:text-3xl font-semibold">Add Customer</h3>
+      <div class="bg-white rounded-md shadow-md overflow-hidden">
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 py-4">
-            <div className="flex flex-col">
+          <div className="grid grid-cols-1 gap-6 px-8 pt-6 mb-4">
+            <div className="mb-6">
               <label
-                htmlFor="firstName"
                 className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                htmlFor="image"
+              >
+                Image
+              </label>
+              <Dragger {...props}>
+                <p className="ant-upload-drag-icon">
+                  <InboxOutlined />
+                </p>
+                <p className="ant-upload-text">
+                  Click or drag file to this area to upload
+                </p>
+                <p className="ant-upload-hint">
+                  Support for a single upload. Strictly prohibit from uploading
+                  corporate data or other band files.
+                </p>
+              </Dragger>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-8 pt-6 mb-4">
+            <div class="flex flex-col w-full md:w-auto">
+              <label
+                for="firstName"
+                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               >
                 First Name
               </label>
@@ -77,14 +118,14 @@ const AddCustomer = () => {
                 id="firstName"
                 value={firstName}
                 onChange={handleFirstNameChange}
-                className="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
+                class="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div class="flex flex-col w-full md:w-auto">
               <label
-                htmlFor="lastName"
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                for="lastName"
+                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               >
                 Last Name
               </label>
@@ -93,14 +134,14 @@ const AddCustomer = () => {
                 id="lastName"
                 value={lastName}
                 onChange={handleLastNameChange}
-                className="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
+                class="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div class="flex flex-col w-full md:w-auto">
               <label
-                htmlFor="email"
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                for="email"
+                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               >
                 Email
               </label>
@@ -109,14 +150,14 @@ const AddCustomer = () => {
                 id="email"
                 value={email}
                 onChange={handleEmailChange}
-                className="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
+                class="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div class="flex flex-col w-full md:w-auto">
               <label
-                htmlFor="username"
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                for="username"
+                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               >
                 Username
               </label>
@@ -125,14 +166,14 @@ const AddCustomer = () => {
                 id="username"
                 value={username}
                 onChange={handleUsernameChange}
-                className="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
+                class="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div class="flex flex-col w-full md:w-auto">
               <label
-                htmlFor="password"
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                for="password"
+                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               >
                 Password
               </label>
@@ -141,14 +182,14 @@ const AddCustomer = () => {
                 id="password"
                 value={password}
                 onChange={handlePasswordChange}
-                className="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
+                class="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div class="flex flex-col w-full md:w-auto">
               <label
-                htmlFor="phone"
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                for="phone"
+                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               >
                 Phone Number
               </label>
@@ -157,27 +198,27 @@ const AddCustomer = () => {
                 id="phone"
                 value={phone}
                 onChange={handlePhoneChange}
-                className="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
+                class="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full md:w-auto">
               <label
-                htmlFor="streetAddress"
+                htmlFor="street"
                 className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               >
                 Street Address
               </label>
               <input
                 type="text"
-                id="streetAddress"
+                id="street"
                 value={streetAddress}
                 onChange={handleStreetAddressChange}
                 className="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full md:w-auto">
               <label
                 htmlFor="city"
                 className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
@@ -193,7 +234,7 @@ const AddCustomer = () => {
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full md:w-auto">
               <label
                 htmlFor="state"
                 className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
@@ -209,30 +250,30 @@ const AddCustomer = () => {
                 required
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full md:w-auto">
               <label
-                htmlFor="zipCode"
+                htmlFor="zip"
                 className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               >
                 Zip Code
               </label>
               <input
                 type="text"
-                id="zipCode"
+                id="zip"
                 value={zipCode}
                 onChange={handleZipCodeChange}
                 className="border border-gray-300 rounded py-2 px-3 mt-1 w-full"
                 required
               />
             </div>
-          </div>
-          <div className="flex justify-center my-4">
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Add Customer
-            </button>
+            <div class="py-4 border-gray-200">
+              <button
+                type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>

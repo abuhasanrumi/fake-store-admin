@@ -59,7 +59,8 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="max-w-screen-lg mx-auto my-10">
+    <div className="max-w-screen-lg mx-auto mb-10">
+      <h3 className="mb-6 text-xl md:text-3xl font-semibold">Add Product</h3>
       <form onSubmit={handleSubmit}>
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
           <div className="flex flex-wrap mb-6">
